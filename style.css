@@ -134,7 +134,7 @@ footer{ max-width:1240px; margin:0 auto; padding:0 24px 40px; color:var(--muted)
 @media (max-width:959px){
   .pick ul{ grid-template-columns:1fr }
 }
-@media (min-width:960px){
+@media (min-width:720px){
   .right{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:32px }
   .proof{ margin-top:0 }
 }
