@@ -20,17 +20,25 @@ main{ max-width:1240px; margin:0 auto; padding:0 24px }
 
 /* 상단 카드 */
 .profile{
-  margin-top:24px; padding:26px 40px; border-radius:24px;
+  margin-top:24px; padding:26px 32px; border-radius:24px;
   background:var(--stage); color:var(--on-stage);
-  display:flex; align-items:center; justify-content:space-between; gap:24px;
+  display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr) 168px;
+  grid-template-areas:"who about photo"; align-items:center; gap:24px;
 }
+.who{ grid-area:who; min-width:0 }
+.profile .about{ grid-area:about; min-width:0 }
+.profile .about h2{ margin-bottom:10px; padding-bottom:6px; border-bottom-color:rgba(255,255,255,.3); color:var(--on-stage) }
+.profile .about h2::before{ background:rgba(255,255,255,.8) }
+.profile .about .lead{ margin-bottom:8px; color:var(--on-stage); font-size:1.08rem; line-height:1.45 }
+.profile .about p:not(.lead){ margin-bottom:8px; font-size:.9rem; color:var(--on-stage-muted) }
+.profile .about .purpose{ margin-top:10px; padding:8px 11px; border-radius:8px; background:rgba(255,255,255,.1); color:var(--on-stage-muted) }
 .hello{ margin:0; font-size:1.1rem; font-weight:300; color:var(--on-stage-muted) }
 .profile h1{ margin:0 0 12px; font-size:clamp(2.2rem,4vw,3rem); line-height:1.2; font-weight:800; letter-spacing:-0.03em }
 .tag{ display:inline-block; margin:0 0 12px; padding:6px 20px; background:#fff; color:var(--stage); font-weight:500; font-size:.95rem }
 .hobby{ margin:0; font-size:.95rem; color:var(--on-stage-muted) }
 .hobby span{ font-weight:700; color:var(--on-stage); margin-right:8px }
-.photo{ flex:none; width:168px; height:168px; border-radius:50%; overflow:hidden; background:var(--line) }
-.photo svg, .photo img{ display:block; width:100%; height:100%; object-fit:cover }
+.photo{ grid-area:photo; width:168px; height:168px; border-radius:50%; overflow:hidden; background:var(--line) }
+.photo img{ display:block; width:100%; height:100%; object-fit:cover }
 
 /* 섹션 제목: 아이콘 자리 + 아래 선 */
 h2{
@@ -41,7 +49,6 @@ h2::before{ content:""; flex:none; width:20px; height:20px; border-radius:6px; b
 
 /* 첫 화면 */
 .top{ display:grid; gap:32px; padding:28px 0 0; grid-template-columns:minmax(0,1fr) }
-@media (min-width:960px){ .top{ grid-template-columns:minmax(0,340px) minmax(0,1fr); gap:44px } }
 .lead{ font-size:1.15rem; font-weight:700; line-height:1.6; letter-spacing:-0.02em; color:var(--stage) }
 .about p{ font-size:.97rem }
 .purpose{ margin-top:14px; padding:12px 14px; border-radius:10px; background:var(--soft); font-size:.9rem !important; color:var(--muted) }
@@ -107,20 +114,29 @@ footer{ max-width:1240px; margin:0 auto; padding:0 24px 40px; color:var(--muted)
 }
 /* 낮은 화면(1366x768 등): 첫 화면에 소개·활동·근거가 함께 보이도록 압축 */
 @media (min-width:960px) and (max-height:820px){
-  .profile{ margin-top:16px; padding:18px 36px }
+  .profile{ margin-top:16px; padding:18px 28px; grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr) 132px; gap:20px }
   .photo{ width:132px; height:132px }
   .profile h1{ font-size:2.2rem; margin-bottom:8px }
   .tag{ margin-bottom:8px }
+  .profile .about h2{ margin-bottom:8px }
+  .profile .about .lead{ font-size:1rem }
+  .profile .about p:not(.lead){ font-size:.84rem }
+  .profile .about .purpose{ margin-top:8px; padding:6px 9px }
   .top{ padding-top:20px }
   .proof{ margin-top:16px }
   .proof article{ padding:16px 20px }
 }
 @media (max-width:959px){
+  .profile{ grid-template-columns:minmax(0,1fr) 132px; grid-template-areas:"who photo" "about about"; gap:18px 24px }
+  .photo{ width:132px; height:132px }
+}
+@media (max-width:959px){
   .pick ul{ grid-template-columns:1fr }
 }
 @media (max-width:720px){
-  .profile{ flex-direction:column-reverse; align-items:flex-start; padding:24px }
+  .profile{ grid-template-columns:minmax(0,1fr) 120px; padding:24px }
   .photo{ width:120px; height:120px }
+  .profile .about p:not(.lead){ font-size:.9rem }
   .cols{ grid-template-columns:1fr }
 }
 @media (prefers-reduced-motion: reduce){
