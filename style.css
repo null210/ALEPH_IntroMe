@@ -1,0 +1,128 @@
+:root{
+  --bg:#FFFFFF; --fg:#1A2040; --muted:#4F5D7D; --line:#D5DEF0; --soft:#F2F6FB;
+  --accent:#2A5CA8; --stage:#2A2D78; --on-stage:#FFFFFF; --on-stage-muted:#D2DAF7; --todo:#8A4B00;
+}
+*,*::before,*::after{ box-sizing:border-box }
+html{ -webkit-text-size-adjust:100% }
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  font-size:1rem; line-height:1.7; letter-spacing:-0.01em;
+  word-break:keep-all; overflow-wrap:anywhere;
+}
+p{ margin:0 0 10px } p:last-child{ margin-bottom:0 }
+ul{ list-style:none; margin:0; padding:0 }
+h1,h2,h3{ margin:0 }
+a{ text-underline-offset:4px }
+a:focus-visible, button:focus-visible{ outline:3px solid var(--accent); outline-offset:3px; border-radius:6px }
+img{ max-width:100%; height:auto }
+main{ max-width:1240px; margin:0 auto; padding:0 24px }
+
+/* 상단 카드 */
+.profile{
+  margin-top:24px; padding:26px 40px; border-radius:24px;
+  background:var(--stage); color:var(--on-stage);
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+}
+.hello{ margin:0; font-size:1.1rem; font-weight:300; color:var(--on-stage-muted) }
+.profile h1{ margin:0 0 12px; font-size:clamp(2.2rem,4vw,3rem); line-height:1.2; font-weight:800; letter-spacing:-0.03em }
+.tag{ display:inline-block; margin:0 0 12px; padding:6px 20px; background:#fff; color:var(--stage); font-weight:500; font-size:.95rem }
+.hobby{ margin:0; font-size:.95rem; color:var(--on-stage-muted) }
+.hobby span{ font-weight:700; color:var(--on-stage); margin-right:8px }
+.photo{ flex:none; width:168px; height:168px; border-radius:50%; overflow:hidden; background:var(--line) }
+.photo svg, .photo img{ display:block; width:100%; height:100%; object-fit:cover }
+
+/* 섹션 제목: 아이콘 자리 + 아래 선 */
+h2{
+  display:flex; align-items:center; gap:10px; margin-bottom:14px; padding-bottom:8px;
+  border-bottom:1px solid var(--line); font-size:1.05rem; font-weight:700; color:var(--fg); line-height:1.5;
+}
+h2::before{ content:""; flex:none; width:20px; height:20px; border-radius:6px; background:var(--stage) }
+
+/* 첫 화면 */
+.top{ display:grid; gap:32px; padding:28px 0 0; grid-template-columns:minmax(0,1fr) }
+@media (min-width:960px){ .top{ grid-template-columns:minmax(0,340px) minmax(0,1fr); gap:44px } }
+.lead{ font-size:1.15rem; font-weight:700; line-height:1.6; letter-spacing:-0.02em; color:var(--stage) }
+.about p{ font-size:.97rem }
+.purpose{ margin-top:14px; padding:12px 14px; border-radius:10px; background:var(--soft); font-size:.9rem !important; color:var(--muted) }
+
+.pick ul{ display:grid; gap:10px; grid-template-columns:repeat(3,minmax(0,1fr)) }
+.pick button{
+  width:100%; height:100%; text-align:left; font:inherit; color:var(--fg); cursor:pointer;
+  background:#fff; border:1px solid var(--line); border-top:4px solid var(--line);
+  border-radius:12px; padding:12px 14px; display:grid; gap:2px; align-content:start;
+}
+.pick button strong{ font-size:1rem; letter-spacing:-0.02em; line-height:1.4 }
+.pick button span{ font-size:.88rem; color:var(--muted); line-height:1.5 }
+.pick button:hover{ border-color:var(--accent) }
+.pick button[aria-expanded="true"]{ border-color:var(--accent); border-top-color:var(--accent); background:var(--soft) }
+
+.proof{ margin-top:22px }
+.proof article{ padding:20px 22px; border-radius:14px; background:var(--soft); border:1px solid var(--line); animation:show .35s ease }
+.proof article[hidden]{ display:none }
+.proof h3{ font-size:1.15rem; margin-bottom:10px; letter-spacing:-0.02em }
+dl{ margin:0; display:grid; grid-template-columns:3rem minmax(0,1fr); gap:8px 12px }
+dt{ font-weight:700; color:var(--accent) }
+dd{ margin:0 }
+.evidence{ margin-top:14px; padding-top:12px; border-top:1px dashed var(--line); font-size:.95rem }
+.evidence span{ font-weight:700; color:var(--accent); margin-right:8px }
+.todo{ color:var(--todo); font-style:normal }
+@keyframes show{ from{ opacity:0 } to{ opacity:1 } }
+
+/* 아래 구역 */
+.more{ display:grid; gap:40px; padding:48px 0 32px; grid-template-columns:minmax(0,1fr) }
+@media (min-width:960px){ .more{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:44px } }
+.more > div{ display:grid; gap:36px; align-content:start }
+.rules{ display:grid; gap:10px }
+.rules strong{ display:block; color:var(--stage) }
+.contact .mail{ display:inline-block; margin-top:6px; font-size:clamp(1.2rem,3vw,1.5rem); font-weight:700; color:var(--stage) }
+.cols{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px }
+.col{ padding:16px 18px; border-radius:14px; background:var(--soft); border:1px solid var(--line) }
+.col.closed{ background:transparent; border-style:dashed }
+.col h3{ font-size:1rem; margin-bottom:6px }
+.col li{ color:var(--muted); font-size:.93rem; line-height:1.6; padding:2px 0 }
+
+.stack{ grid-template-columns:5.5rem minmax(0,1fr); gap:12px 12px }
+.stack dt{ color:var(--fg) }
+.chips{ display:flex; flex-wrap:wrap; gap:6px }
+.chips li{ padding:2px 14px; border-radius:999px; background:var(--soft); border:1px solid var(--line); font-size:.92rem }
+.chips li.todo{ border-style:dashed; background:transparent }
+.bottom{ padding:0 0 32px }
+.bottom .cols{ max-width:760px }
+
+/* 포트폴리오 (이력서 형식) */
+.hub{ display:flex; flex-wrap:wrap; gap:10px }
+.hub > *{ padding:10px 18px; border-radius:10px; background:var(--soft); border:1px solid var(--line); font-weight:700 }
+.hub a{ color:var(--stage); text-decoration:none }
+.hub a:hover{ border-color:var(--accent) }
+.hub small{ margin-left:6px; font-weight:400; font-size:.82rem; color:var(--muted) }
+.hub > .todo{ background:transparent; border-style:dashed }
+
+footer{ max-width:1240px; margin:0 auto; padding:0 24px 40px; color:var(--muted); font-size:.875rem }
+
+/* 큰 화면: 글자와 본문 폭을 키워 빈 공간을 줄임 */
+@media (min-width:1600px){
+  html{ font-size:112.5% }
+  main, footer{ max-width:1400px }
+}
+/* 낮은 화면(1366x768 등): 첫 화면에 소개·활동·근거가 함께 보이도록 압축 */
+@media (min-width:960px) and (max-height:820px){
+  .profile{ margin-top:16px; padding:18px 36px }
+  .photo{ width:132px; height:132px }
+  .profile h1{ font-size:2.2rem; margin-bottom:8px }
+  .tag{ margin-bottom:8px }
+  .top{ padding-top:20px }
+  .proof{ margin-top:16px }
+  .proof article{ padding:16px 20px }
+}
+@media (max-width:959px){
+  .pick ul{ grid-template-columns:1fr }
+}
+@media (max-width:720px){
+  .profile{ flex-direction:column-reverse; align-items:flex-start; padding:24px }
+  .photo{ width:120px; height:120px }
+  .cols{ grid-template-columns:1fr }
+}
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important }
+}
