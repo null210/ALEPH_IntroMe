@@ -49,6 +49,7 @@ h2::before{ content:""; flex:none; width:20px; height:20px; border-radius:6px; b
 
 /* 첫 화면 */
 .top{ display:grid; gap:32px; padding:28px 0 0; grid-template-columns:minmax(0,1fr) }
+.right{ display:grid; gap:24px }
 .lead{ font-size:1.15rem; font-weight:700; line-height:1.6; letter-spacing:-0.02em; color:var(--stage) }
 .about p{ font-size:.97rem }
 .purpose{ margin-top:14px; padding:12px 14px; border-radius:10px; background:var(--soft); font-size:.9rem !important; color:var(--muted) }
@@ -131,6 +132,13 @@ footer{ max-width:1240px; margin:0 auto; padding:0 24px 40px; color:var(--muted)
   .photo{ width:132px; height:132px }
 }
 @media (max-width:959px){
+  .pick ul{ grid-template-columns:1fr }
+}
+@media (min-width:960px){
+  .right{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:32px }
+  .proof{ margin-top:0 }
+}
+@media (min-width:960px) and (max-width:1199px){
   .pick ul{ grid-template-columns:1fr }
 }
 @media (max-width:720px){
